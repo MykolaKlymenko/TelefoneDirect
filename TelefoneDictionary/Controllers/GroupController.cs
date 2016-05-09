@@ -15,7 +15,7 @@ namespace TelefoneDictionary.Controllers
             var groupsList = groupRepository.Read();
             ViewBag.GroupList= Helper.FillSelectionListGroup(groupsList);
             ViewBag.Groups = groupsList;
-            ViewBag.IsAdmin = true;
+            ViewBag.IsAdmin = false;
             return View("TreeView");
         }
 
@@ -29,7 +29,7 @@ namespace TelefoneDictionary.Controllers
         {
             ViewBag.IsAdmin = false;
             var groupsList = groupRepository.Read();
-            var selectedGroups = groupsList.FindAll(g=>g.ParentPk == groupPK);
+            var selectedGroups = groupsList.FindAll(g=>g.ParentPk == groupPK ||g.GroupPK == groupPK);
             ViewBag.Groups = selectedGroups;
             return View("SliderView");
         }

@@ -6,7 +6,7 @@
 
 <div id="Tree">
     <!-- HIDDEN / POP-UP DIV -->
-    <div id="pop-up">
+    @*<div id="pop-up">
         <div id="#modal-window">
             <div class="modal-content">
                 <div class="modal-header" align="center">
@@ -20,7 +20,7 @@
                 <a>Edit</a>
             </div>
         </div>
-    </div>
+    </div>*@
 </div>
 
 <script>
@@ -71,7 +71,7 @@
         root.children.forEach(collapse);
         update(root);
 
-    d3.select(self.frameElement).style("height", "800px");
+    d3.select(self.frameElement).style("height", screen.height);
 
     function update(source) {
 

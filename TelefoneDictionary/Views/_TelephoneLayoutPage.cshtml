@@ -32,16 +32,13 @@
     </style>
     @if(ViewBag.IsAdmin)
     { 
-    <link rel="stylesheet" href="~/Content/styles.css">
     <link rel="stylesheet" href="~/Content/PopUP.css"/>
     }
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/styles.css">
     <link rel="stylesheet" href="~/Content/superslides.css" />
-    <link rel="stylesheet" href="~/Content/presentation.css" />
     <!-- load the d3.js library -->
     <script src="~/Scripts/d3.min.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jssor.slider.mini.js"></script>
 </head>
 <body>
@@ -69,7 +66,8 @@
 </div>
     @if(ViewBag.IsAdmin)
     { 
-<script src="~/Scripts/custom.js"></script>
+        <script src="~/Scripts/admin.js"></script>
     }
+    <script src="~/Scripts/custom.js"></script>
 </body>
 </html>
