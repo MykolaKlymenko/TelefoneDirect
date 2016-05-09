@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TelefonDirection" Class="TelephoneDictionarryDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=PC\SERVERSQL;Initial Catalog=TelefonDirection;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Connection" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.GroupRecord" Member="GroupRecords">
+    <Type Name="GroupRecord">
+      <Column Name="RecordFK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupPK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="UniversalGroup_GroupRecord" Member="UniversalGroup" ThisKey="GroupPK" OtherKey="groupPk" Type="UniversalGroup" IsForeignKey="true" />
+      <Association Name="Record_GroupRecord" Member="Record" ThisKey="RecordFK" OtherKey="RecordPK" Type="Record" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UniversalGroup" Member="UniversalGroups">
+    <Type Name="UniversalGroup">
+      <Column Name="groupPk" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="parentPk" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LeaderFK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="UniversalGroup_GroupRecord" Member="GroupRecords" ThisKey="groupPk" OtherKey="GroupPK" Type="GroupRecord" />
+      <Association Name="Record_UniversalGroup" Member="Record" ThisKey="LeaderFK" OtherKey="RecordPK" Type="Record" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Record" Member="Records">
+    <Type Name="Record">
+      <Column Name="RecordPK" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Record_GroupRecord" Member="GroupRecords" ThisKey="RecordPK" OtherKey="RecordFK" Type="GroupRecord" />
+      <Association Name="Record_UniversalGroup" Member="UniversalGroups" ThisKey="RecordPK" OtherKey="LeaderFK" Type="UniversalGroup" />
+      <Association Name="Record_info" Member="infos" ThisKey="RecordPK" OtherKey="RecordFK" Type="info" />
+    </Type>
+  </Table>
+  <Table Name="dbo.info" Member="infos">
+    <Type Name="info">
+      <Column Name="Phone" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EMail" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RecordFK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="infoPK" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Record_info" Member="Record" ThisKey="RecordFK" OtherKey="RecordPK" Type="Record" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,11 @@
+﻿@model TelefoneDictionary.Models.Enteties.Group
+<a href='#' id="groupName"><span>Add Universal Group</span></a>
+<ul id="groupMenu">
+    <li>
+        <form action="/Group/AddGroup" method="post">
+            <input type="text" name="name" class="user_input" placeholder="FullName" />
+            @Html.DropDownListFor(m => Model.ParentPk, (List<SelectListItem>)ViewBag.GroupList, new { @class = "group_list" })
+            <input type="submit" class="user_submit" value="Submit" />
+        </form>
+    </li>
+</ul>

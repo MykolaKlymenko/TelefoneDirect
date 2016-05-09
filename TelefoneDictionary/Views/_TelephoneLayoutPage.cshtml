@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    <style>
+        .node {
+            cursor: pointer;
+        }
+
+            .node circle {
+                fill: #fff;
+                stroke: steelblue;
+                stroke-width: 5.5px;
+            }
+
+            .node text {
+                font: 13px sans-serif;
+                font-weight: 900;
+            }
+
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1.5px;
+        }
+    </style>
+    @if(ViewBag.IsAdmin)
+    { 
+    <link rel="stylesheet" href="~/Content/styles.css">
+    <link rel="stylesheet" href="~/Content/PopUP.css"/>
+    }
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/superslides.css" />
+    <link rel="stylesheet" href="~/Content/presentation.css" />
+    <!-- load the d3.js library -->
+    <script src="~/Scripts/d3.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jssor.slider.mini.js"></script>
+</head>
+<body>
+    @if (ViewBag.IsAdmin)
+    { 
+    <div id='cssmenu'>
+        <ul>
+            <li class='active has-sub'>
+                @Html.Partial("GroupPartial")
+            </li>
+            <li class='active has-sub'>
+                @Html.Partial("RecordPartial")
+            </li>
+            <li id="search">
+                <form action="" method="get">
+                    <input type="text" name="search_text" id="search_text" placeholder="Search" />
+                    <input type="button" name="search_button" id="search_button">
+                </form>
+            </li>
+        </ul>
+    </div>
+    }
+<div>
+    @RenderBody()
+</div>
+    @if(ViewBag.IsAdmin)
+    { 
+<script src="~/Scripts/custom.js"></script>
+    }
+</body>
+</html>

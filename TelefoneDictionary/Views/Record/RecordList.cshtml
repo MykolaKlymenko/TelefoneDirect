@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/_TelephoneLayoutPage.cshtml";
+    ViewBag.Title = "Records";
+}
+
+@helper ParseStringDelimitator(string str)
+{
+    foreach (var s in str.Split(new char[]{','}))
+    { 
+        @s<br>
+    } 
+}
+
+<link rel="stylesheet" href="~/Content/Records.css" />
+
+<div class="record">
+    <ul class="record">
+        @foreach(var record in ViewBag.Records)
+        { 
+        <li class="record">
+            <div>
+                <img src='@Url.Content(record.Photo)'>
+            <h3>@record.Position</h3>
+            <h2>@record.Name</h2>
+            <p>@ParseStringDelimitator(record.Phone)</p>
+            </div>
+        </li>
+        }
+    </ul>
+</div>

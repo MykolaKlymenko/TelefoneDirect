@@ -1,0 +1,14 @@
+﻿@model TelefoneDictionary.Models.Record
+<a href='#' id="recordName"><span>Add Record</span></a>
+<ul id="recordMenu">
+    <li>
+        <form action="/Record/AddRecord" method="post">
+            <input type="text" name="name" class="user_input" placeholder="FullName" />
+            <input type="text" name="email" class="user_input" placeholder="EMail" />
+            <input type="text" name="phone" class="user_input" placeholder="Number" />
+            <input type="file" name="Photo" id="file" class="inputfile" />
+            <label for="file" class="user_input">Choose a file</label>
+            <input type="submit" class="user_submit" value="Submit" />
+        </form>
+    </li>
+</ul>
